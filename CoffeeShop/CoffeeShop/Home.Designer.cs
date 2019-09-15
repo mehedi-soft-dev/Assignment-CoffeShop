@@ -32,7 +32,7 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.orderComboBox = new System.Windows.Forms.ComboBox();
+            this.itemComboBox = new System.Windows.Forms.ComboBox();
             this.quantityTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.contactTextBox = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             this.groupBox1.Controls.Add(this.saveButton);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.orderComboBox);
+            this.groupBox1.Controls.Add(this.itemComboBox);
             this.groupBox1.Controls.Add(this.quantityTextBox);
             this.groupBox1.Controls.Add(this.addressTextBox);
             this.groupBox1.Controls.Add(this.contactTextBox);
@@ -96,20 +96,20 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Item";
             // 
-            // orderComboBox
+            // itemComboBox
             // 
-            this.orderComboBox.Font = new System.Drawing.Font("Lucida Fax", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderComboBox.FormattingEnabled = true;
-            this.orderComboBox.Items.AddRange(new object[] {
+            this.itemComboBox.Font = new System.Drawing.Font("Lucida Fax", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itemComboBox.FormattingEnabled = true;
+            this.itemComboBox.Items.AddRange(new object[] {
             "Black",
             "Cold",
             "Hot",
             "Regular"});
-            this.orderComboBox.Location = new System.Drawing.Point(136, 182);
-            this.orderComboBox.Name = "orderComboBox";
-            this.orderComboBox.Size = new System.Drawing.Size(170, 24);
-            this.orderComboBox.TabIndex = 7;
-            this.orderComboBox.Text = "--Select One--";
+            this.itemComboBox.Location = new System.Drawing.Point(136, 182);
+            this.itemComboBox.Name = "itemComboBox";
+            this.itemComboBox.Size = new System.Drawing.Size(170, 24);
+            this.itemComboBox.TabIndex = 7;
+            this.itemComboBox.Text = "--Select One--";
             // 
             // quantityTextBox
             // 
@@ -203,7 +203,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox orderComboBox;
+        private System.Windows.Forms.ComboBox itemComboBox;
         private System.Windows.Forms.TextBox quantityTextBox;
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox contactTextBox;

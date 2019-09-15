@@ -12,6 +12,21 @@ namespace CoffeeShop
 {
     public partial class Home : Form
     {
+
+        const int size = 10;
+
+        string[] name = new string[size];
+        string[] contact = new string[size];
+        string[] address = new string[size];
+        string[] item = new string[size];
+
+        int[] quantity = new int[size];
+        int[] price = new int[size];
+        int[] totalBill = new int[size];
+
+
+        int index = 0;
+
         public Home()
         {
             InitializeComponent();
@@ -19,32 +34,51 @@ namespace CoffeeShop
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            String customerName, contact, address, order, item;
-            int quantity, price, totalBill;
+            if(index < size)
+            {
+                if(itemComboBox.Text != "--Select One--")
+                {
+                    name[index] = nameTextBox.Text;
+                    contact[index] = contactTextBox.Text;
+                    address[index] = addressTextBox.Text;
+                    item[index] = itemComboBox.Text;
 
-            customerName = nameTextBox.Text;
-            contact = contactTextBox.Text;
-            address = addressTextBox.Text;
-            order = orderComboBox.Text;
-            quantity = Convert.ToInt32(quantityTextBox.Text);
-            item = orderComboBox.Text;
+                    if (item[index]=="Black")
+                        price[index] = 120;
+                    else if (item[index] == "Cold")
+                        price[index] = 100;
+                    else if (item[index] == "Hot")
+                        price[index] = 90;
+                    else if (item[index] == "Regular")
+                        price[index] = 80;
 
-            if (orderComboBox.Text == "Black")
-                price = 120;
-            else if (orderComboBox.Text == "Cold")
-                price = 100;
-            else if (orderComboBox.Text == "Hot")
-                price = 90;
+                    quantity[index] = Convert.ToInt32(quantityTextBox.Text);
+                    totalBill[index] = price[index] * quantity[index];
+
+                    
+                    richTextBox.Text += "\t\tCustomer " + (index + 1) +"\n\n";
+                    richTextBox.Text += "Name : " +name[index] + "\n";
+                    richTextBox.Text += "Contact : " +contact[index] + "\n";
+                    richTextBox.Text += "Address : " +address[index] + "\n\n";
+                    richTextBox.Text += "Ordered Item : " +item[index] + "\n";
+                    richTextBox.Text += "Price : " +price[index] + "\n";
+                    richTextBox.Text += "Quantity : " +quantity[index] +"\n";
+                    richTextBox.Text += "Total Bill : " +totalBill[index] + "\n";
+                    richTextBox.Text += "----------------------------------";
+
+                    index++;
+
+                }
+                else
+                {
+                    MessageBox.Show("Please Select an Item !");
+                }
+            }
             else
-               price = 80;
-
-            totalBill = price * quantity;
-
-            if (orderComboBox.Text == "--Select One--")
-                MessageBox.Show("Please Select an Item !!!");
-            else
-                richTextBox.Text = "\nCustomer Name :  " + customerName + "\n" + "Contact No.        :  " + contact + "\n" + "Address             :  " + address + "\n\n\n" + "Ordered Item :  " + orderComboBox.Text + "\n"+"Price              :  "+price+"\n" + "Quantity        :  " + quantity + "\n" + "Total Bill        :  " + totalBill + "\n";
-
+            {
+                MessageBox.Show("Maximum Customer added !!");
+            }
+            
 
         }
     }
