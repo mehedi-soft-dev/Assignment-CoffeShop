@@ -86,7 +86,7 @@ namespace CoffeeShop
 
         private void ShowCustomer(int startIndex, int endIndex)
         {
-            richTextBox.Text = "";
+            
             for(int index =startIndex; index < endIndex; index++)
             {
                 richTextBox.Text += "\t\tCustomer " + (index + 1) + "\n\n";
