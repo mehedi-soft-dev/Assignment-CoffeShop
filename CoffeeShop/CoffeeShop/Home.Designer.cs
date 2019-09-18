@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.saveButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.showAllButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.itemComboBox = new System.Windows.Forms.ComboBox();
@@ -46,7 +48,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.saveButton);
+            this.groupBox1.Controls.Add(this.resetButton);
+            this.groupBox1.Controls.Add(this.showAllButton);
+            this.groupBox1.Controls.Add(this.addButton);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.itemComboBox);
@@ -65,16 +69,38 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Information";
             // 
-            // saveButton
+            // resetButton
             // 
-            this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(77, 298);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(159, 33);
-            this.saveButton.TabIndex = 2;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetButton.Location = new System.Drawing.Point(216, 280);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(79, 27);
+            this.resetButton.TabIndex = 11;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // showAllButton
+            // 
+            this.showAllButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showAllButton.Location = new System.Drawing.Point(118, 279);
+            this.showAllButton.Name = "showAllButton";
+            this.showAllButton.Size = new System.Drawing.Size(70, 27);
+            this.showAllButton.TabIndex = 10;
+            this.showAllButton.Text = "Show All";
+            this.showAllButton.UseVisualStyleBackColor = true;
+            this.showAllButton.Click += new System.EventHandler(this.showAllButton_Click);
+            // 
+            // addButton
+            // 
+            this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addButton.Location = new System.Drawing.Point(9, 280);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(85, 26);
+            this.addButton.TabIndex = 2;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // label5
             // 
@@ -212,7 +238,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox richTextBox;
-        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button showAllButton;
     }
 }
 

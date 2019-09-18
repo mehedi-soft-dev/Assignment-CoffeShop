@@ -12,74 +12,106 @@ namespace CoffeeShop
 {
     public partial class Home : Form
     {
+        List<string> names = new List<string> {};
+        List<string> contacts = new List<string> {};
+        List<string> addresses = new List<string> {};
+        List<string> items = new List<string> {};
 
-        const int size = 10;
+        List<int> quantities = new List<int> {};
+        List<int> prices = new List<int> {};
+        List<int> totalBills = new List<int> {};
+        
 
-        string[] name = new string[size];
-        string[] contact = new string[size];
-        string[] address = new string[size];
-        string[] item = new string[size];
-
-        int[] quantity = new int[size];
-        int[] price = new int[size];
-        int[] totalBill = new int[size];
-
-
-        int index = 0;
-
+        
         public Home()
         {
             InitializeComponent();
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void addButton_Click(object sender, EventArgs e)
         {
-            if(index < size)
+            if (!contacts.Contains(contactTextBox.Text) && itemComboBox.Text != "--Select One--" && !String.IsNullOrEmpty(quantityTextBox.Text))
             {
-                if(itemComboBox.Text != "--Select One--")
-                {
-                    name[index] = nameTextBox.Text;
-                    contact[index] = contactTextBox.Text;
-                    address[index] = addressTextBox.Text;
-                    item[index] = itemComboBox.Text;
-
-                    if (item[index]=="Black")
-                        price[index] = 120;
-                    else if (item[index] == "Cold")
-                        price[index] = 100;
-                    else if (item[index] == "Hot")
-                        price[index] = 90;
-                    else if (item[index] == "Regular")
-                        price[index] = 80;
-
-                    quantity[index] = Convert.ToInt32(quantityTextBox.Text);
-                    totalBill[index] = price[index] * quantity[index];
-
-                    
-                    richTextBox.Text += "\t\tCustomer " + (index + 1) +"\n\n";
-                    richTextBox.Text += "Name : " +name[index] + "\n";
-                    richTextBox.Text += "Contact : " +contact[index] + "\n";
-                    richTextBox.Text += "Address : " +address[index] + "\n\n";
-                    richTextBox.Text += "Ordered Item : " +item[index] + "\n";
-                    richTextBox.Text += "Price : " +price[index] + "\n";
-                    richTextBox.Text += "Quantity : " +quantity[index] +"\n";
-                    richTextBox.Text += "Total Bill : " +totalBill[index] + "\n";
-                    richTextBox.Text += "----------------------------------";
-
-                    index++;
-
-                }
-                else
-                {
-                    MessageBox.Show("Please Select an Item !");
-                }
+                AddCustomer(nameTextBox.Text, contactTextBox.Text, addressTextBox.Text, itemComboBox.Text, Convert.ToInt32(quantityTextBox.Text));
             }
             else
             {
-                MessageBox.Show("Maximum Customer added !!");
+                if (contacts.Contains(contactTextBox.Text))
+                    MessageBox.Show("This number is already added !");
+                else if (itemComboBox.Text == "--Select One--")
+                    MessageBox.Show("Please Select an Item !");
+                else if (String.IsNullOrEmpty(quantityTextBox.Text))
+                    MessageBox.Show("Please enter quantity !");
+
+                return;
             }
+
+            Reset();
+            ShowCustomer(names.Count - 1, names.Count);
             
+        }
+
+        private void showAllButton_Click(object sender, EventArgs e)
+        {
+            Reset();
+            ShowCustomer(0, names.Count);
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        private void AddCustomer(string name, string contact, string address, string item,  int quantity)
+        {
+            int price = 0;
+            if (item == "Black")
+                price = 120;
+            else if (item == "Cold")
+                price = 100;
+            else if (item == "Hot")
+                price = 90;
+            else if (item == "Regular")
+                price = 80;
+
+            names.Add(name);
+            contacts.Add(contact);
+            addresses.Add(address);
+            items.Add(item);
+            prices.Add(price);
+            quantities.Add(quantity);
+            totalBills.Add(quantity*price);
 
         }
+
+        private void ShowCustomer(int startIndex, int endIndex)
+        {
+            richTextBox.Text = "";
+            for(int index =startIndex; index < endIndex; index++)
+            {
+                richTextBox.Text += "\t\tCustomer " + (index + 1) + "\n\n";
+                richTextBox.Text += "Name : " + names[index] + "\n";
+                richTextBox.Text += "Contact : " + contacts[index] + "\n";
+                richTextBox.Text += "Address : " + addresses[index] + "\n\n";
+                richTextBox.Text += "Ordered Item : " + items[index] + "\n";
+                richTextBox.Text += "Price : " + prices[index] + "\n";
+                richTextBox.Text += "Quantity : " + quantities[index] + "\n";
+                richTextBox.Text += "Total Bill : " + totalBills[index] + "\n";
+                richTextBox.Text += "----------------------------------";
+            }
+
+        }
+
+        private void Reset()
+        {
+            nameTextBox.Text = "";
+            contactTextBox.Text = "";
+            addressTextBox.Text = "";
+            itemComboBox.Text = "--Select One--";
+            quantityTextBox.Text = null;
+            richTextBox.Text = "";
+        }
+
+        
     }
 }
