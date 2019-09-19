@@ -30,25 +30,33 @@ namespace CoffeeShop
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            if (!contacts.Contains(contactTextBox.Text) && itemComboBox.Text != "--Select One--" && !String.IsNullOrEmpty(quantityTextBox.Text))
+            try
             {
-                AddCustomer(nameTextBox.Text, contactTextBox.Text, addressTextBox.Text, itemComboBox.Text, Convert.ToInt32(quantityTextBox.Text));
+                if (!contacts.Contains(contactTextBox.Text) && itemComboBox.Text != "--Select One--" && !String.IsNullOrEmpty(quantityTextBox.Text))
+                {
+                    AddCustomer(nameTextBox.Text, contactTextBox.Text, addressTextBox.Text, itemComboBox.Text, Convert.ToInt32(quantityTextBox.Text));
+                }
+                else
+                {
+                    if (contacts.Contains(contactTextBox.Text))
+                        MessageBox.Show("This number is already added !");
+                    else if (itemComboBox.Text == "--Select One--")
+                        MessageBox.Show("Please Select an Item !");
+                    else if (String.IsNullOrEmpty(quantityTextBox.Text))
+                        MessageBox.Show("Please enter quantity !");
+
+                    return;
+                }
+
+                Reset();
+                ShowCustomer(names.Count - 1, names.Count);
+
             }
-            else
+            catch (Exception exception)
             {
-                if (contacts.Contains(contactTextBox.Text))
-                    MessageBox.Show("This number is already added !");
-                else if (itemComboBox.Text == "--Select One--")
-                    MessageBox.Show("Please Select an Item !");
-                else if (String.IsNullOrEmpty(quantityTextBox.Text))
-                    MessageBox.Show("Please enter quantity !");
-
-                return;
+                MessageBox.Show(exception.Message);
             }
-
-            Reset();
-            ShowCustomer(names.Count - 1, names.Count);
-            
+           
         }
 
         private void showAllButton_Click(object sender, EventArgs e)
@@ -86,7 +94,6 @@ namespace CoffeeShop
 
         private void ShowCustomer(int startIndex, int endIndex)
         {
-            
             for(int index =startIndex; index < endIndex; index++)
             {
                 richTextBox.Text += "\t\tCustomer " + (index + 1) + "\n\n";
@@ -99,7 +106,6 @@ namespace CoffeeShop
                 richTextBox.Text += "Total Bill : " + totalBills[index] + "\n";
                 richTextBox.Text += "----------------------------------";
             }
-
         }
 
         private void Reset()
